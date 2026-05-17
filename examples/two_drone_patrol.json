@@ -1,0 +1,35 @@
+{
+  "name": "two-drone-indoor-patrol",
+  "description": "Two Crazyflies fly a 1m × 1m square at 1m altitude in line formation. Indoor only.",
+  "fleet": [
+    { "id": "cf01", "callsign": "Recon-1", "backend_uri": "radio://0/80/2M/E7E7E7E7E7" },
+    { "id": "cf02", "callsign": "Recon-2", "backend_uri": "radio://0/80/2M/E7E7E7E7E6" }
+  ],
+  "legs": [
+    {
+      "drone_ids": ["cf01", "cf02"],
+      "formation": "line",
+      "timeout_s": 60.0,
+      "on_failure": "rtl",
+      "waypoints": [
+        { "position": { "x": 0.0, "y": 0.0, "z": 1.0 }, "frame": "local", "hold_s": 1.0, "speed_mps": 0.5 },
+        { "position": { "x": 1.0, "y": 0.0, "z": 1.0 }, "frame": "local", "hold_s": 1.0, "speed_mps": 0.5 },
+        { "position": { "x": 1.0, "y": 1.0, "z": 1.0 }, "frame": "local", "hold_s": 1.0, "speed_mps": 0.5 },
+        { "position": { "x": 0.0, "y": 1.0, "z": 1.0 }, "frame": "local", "hold_s": 1.0, "speed_mps": 0.5 },
+        { "position": { "x": 0.0, "y": 0.0, "z": 1.0 }, "frame": "local", "hold_s": 0.5, "speed_mps": 0.5 }
+      ]
+    }
+  ],
+  "safety": {
+    "max_altitude_m": 2.0,
+    "geofence_min": { "x": -0.5, "y": -0.5, "z": 0.0 },
+    "geofence_max": { "x": 1.5, "y": 1.5, "z": 2.0 },
+    "max_speed_mps": 1.0,
+    "low_battery_pct": 25.0,
+    "emergency_land_keyword": "ABORT"
+  },
+  "metadata": {
+    "author": "hand-authored seed mission",
+    "purpose": "smoke test of the dryrun backend and the mission schema"
+  }
+}

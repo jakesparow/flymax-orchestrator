@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flymax-orchestrator"
+version = "0.1.0a0"
+description = "Claude-powered orchestrator for drone swarms. One sentence in. A formation flies."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+  { name = "Sriram Raghavan", email = "sriram@getmaxrcm.com" }
+]
+keywords = ["drones", "robotics", "swarm", "autonomy", "claude", "anthropic", "ros2", "px4", "crazyflie"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+  "anthropic>=0.40.0",
+  "pydantic>=2.6",
+  "python-dotenv>=1.0",
+  "click>=8.1",
+  "rich>=13.7",
+  "structlog>=24.1",
+]
+
+[project.optional-dependencies]
+sim = [
+  # Gazebo + ROS 2 are installed system-level, not via pip.
+  # crazyflie-lib-python works against the simulated radio too.
+  "cflib>=0.1.27",
+]
+crazyflie = [
+  "cflib>=0.1.27",
+]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "black>=24.0",
+  "ruff>=0.4",
+  "mypy>=1.10",
+]
+
+[project.scripts]
+flymax = "flymax.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jakesparow/flymax-orchestrator"
+Issues = "https://github.com/jakesparow/flymax-orchestrator/issues"
+
+[tool.setuptools.packages.find]
+include = ["flymax*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

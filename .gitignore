@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.log
+logs/
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.bak
+*.tmp
+# ROS / Gazebo cache and logs
+.gazebo/
+.ros/
+# Mission run artifacts
+runs/
+recordings/
+*.mcap
+*.bag
