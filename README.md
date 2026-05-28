@@ -10,6 +10,8 @@
 
 A high-level command layer for autonomous drone fleets. You type a goal in English. A reasoning model (Anthropic's Claude) decomposes it into a flight plan (waypoints, formations, contingencies), dispatches the legs to one or many drones, and watches the kanban for completion.
 
+> 🛰️ **See it work right now: [flymax.getmaxglobal.com/sim](https://flymax.getmaxglobal.com/sim)** — type a mission, watch 3 drones fly it in a browser. The same `MissionPlan` schema you'll see in this repo.
+
 The drones themselves stay dumb — they speak [Crazyflie Python API (cflib)](https://github.com/bitcraze/crazyflie-lib-python) and/or [PX4 + MAVLink](https://docs.px4.io/) over MAVSDK. The smart layer is portable: same orchestrator, swap the backend, simulate first, fly later.
 
 ## Why
