@@ -63,7 +63,7 @@ A mission is JSON. Same JSON flies in sim and on hardware. The orchestrator neve
 
 ```bash
 # 1. clone
-git clone https://github.com/<your-fork>/flymax-orchestrator.git
+git clone https://github.com/jakesparow/flymax-orchestrator.git
 cd flymax-orchestrator
 
 # 2. install (Python 3.11+)
