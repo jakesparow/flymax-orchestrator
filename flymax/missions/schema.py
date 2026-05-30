@@ -100,3 +100,14 @@ class TelemetryEvent(BaseModel):
     state: Literal["idle", "armed", "flying", "hovering", "landing", "landed", "emergency"]
     leg_id: str | None = None
     message: str | None = None
+
+
+# --- Single source of truth ---------------------------------------------------
+# This Pydantic Mission is the ONE canonical contract. The web app's
+# flymax-site/lib/mission.ts and lib/mission-tool.ts must be derived from the
+# JSON Schema emitted here, never hand-edited in parallel. See docs/SCHEMA.md.
+
+def export_json_schema() -> dict:
+    """The canonical JSON Schema for a Mission. Feed this to json-schema-to-typescript
+    to regenerate the site's TS type, so Python and TypeScript can never silently drift."""
+    return Mission.model_json_schema()
