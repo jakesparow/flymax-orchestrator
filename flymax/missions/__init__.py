@@ -10,6 +10,7 @@ from .schema import (
     TelemetryEvent,
     Vec3,
     Waypoint,
+    export_json_schema,
 )
 
 __all__ = [
@@ -22,4 +23,5 @@ __all__ = [
     "TelemetryEvent",
     "Vec3",
     "Waypoint",
+    "export_json_schema",
 ]
